@@ -1,0 +1,19 @@
+Sky: 
+assetstore.unity.com/packages/p/10-skyboxes-pack-day-night-32236
+
+Castle: 
+https://assetstore.unity.com/packages/3d/environments/fantasy/castle-supply-lite-23699
+
+Market: 
+https://assetstore.unity.com/packages/3d/environments/low-poly-medieval-market-262473
+https://assetstore.unity.com/packages/3d/environments/medieval-markets-pack-demo-336926
+
+Trees: 
+https://assetstore.unity.com/packages/3d/environments/lowpoly-environment-nature-free-medieval-fantasy-series-187052
+https://assetstore.unity.com/packages/3d/environments/low-poly-pine-forest-312113
+
+Houses: 
+https://assetstore.unity.com/packages/3d/environments/fantasy/medieval-castle-modular-282498
+
+Water Fountain: 
+https://assetstore.unity.com/packages/p/water-fountain-round-four-tier-pbr-299380
