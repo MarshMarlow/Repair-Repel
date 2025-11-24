@@ -17,3 +17,15 @@ https://assetstore.unity.com/packages/3d/environments/fantasy/medieval-castle-mo
 
 Water Fountain: 
 https://assetstore.unity.com/packages/p/water-fountain-round-four-tier-pbr-299380
+
+Running Animation:
+https://assetstore.unity.com/packages/3d/animations/free-32-rpg-animations-215058
+
+Bandit:
+https://assetstore.unity.com/packages/3d/characters/humanoids/humans/basic-bandit-89978#content
+
+Weapons:
+https://assetstore.unity.com/packages/3d/props/weapons/stylized-newbie-weapons-pack-200709#content
+
+Throwing Animation: 
+https://assetstore.unity.com/packages/3d/animations/human-throwing-animations-free-345572
