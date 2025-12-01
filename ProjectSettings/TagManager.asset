@@ -7,6 +7,9 @@ TagManager:
   - CinemachineTarget
   - DoorTarget
   - PlayerTarget
+  - Stone
+  - FxTemporaire
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -14,7 +17,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Ghost
   - 
   - 
   - 

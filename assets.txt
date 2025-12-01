@@ -41,3 +41,12 @@ https://assetstore.unity.com/packages/3d/environments/historic/modular-medieval-
 
 Barrels:
 https://assetstore.unity.com/packages/3d/props/stylized-wooden-barrel-pack-97797
+
+Ghost:
+https://assetstore.unity.com/packages/3d/characters/little-ghost-lowpoly-free-271926
+
+Crucifix:
+assetstore.unity.com/packages/p/spooky-graveyard-pack-156860
+
+Particles:
+https://assetstore.unity.com/packages/vfx/particles/polygonal-s-low-poly-particle-pack-118355

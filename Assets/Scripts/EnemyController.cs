@@ -7,6 +7,8 @@ using DG.Tweening;
 
 public class EnemyController : MonoBehaviour
 {
+    public FootstepController footstepController;
+    
     public Transform target; // target for nav mesh agent
     [SerializeField] private Animator m_Animator; // animator
     public Color damageColor; // change mat colour when damaged
@@ -45,6 +47,9 @@ public class EnemyController : MonoBehaviour
     
     void Update()
     {
+        //if (canMove && !dead && agent.enabled) {
+        //    footstepController
+        //}
     }
     
     public bool isDead() {
