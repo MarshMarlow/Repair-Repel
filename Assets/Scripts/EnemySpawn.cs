@@ -20,6 +20,11 @@ public class EnemySpawn : MonoBehaviour
     private List<float> golem_inUse_time = new List<float>(); // records the time of when it was last summoned
     
     public float spawnInterval = 0.35f; // how long it takes per spawning an enemy
+    
+    public float spawnBanditInterval = 0.35f;
+    public float spawnGolemInterval = 0.3f;
+    public float spawnGhostInterval = 0.2f;
+    
     public float waveDelay = 20f; // how long between waves
     
     public int currentWave = 0;
@@ -82,8 +87,12 @@ public class EnemySpawn : MonoBehaviour
 
         // spawns each enemy at an interval
         for (int i = 0; i < enemiesToSpawn; i++) {
-            SpawnWeightedEnemy();
-            yield return new WaitForSeconds(spawnInterval);
+            int enemyType = SpawnWeightedEnemy();
+            
+            if (enemyType == 1) yield return new WaitForSeconds(spawnBanditInterval);
+            else if (enemyType == 2) yield return new WaitForSeconds(spawnGolemInterval);
+            else if (enemyType == 3) yield return new WaitForSeconds(spawnGhostInterval);
+            //yield return new WaitForSeconds(spawnInterval);
         }
 
         isSpawning = false;
@@ -92,7 +101,8 @@ public class EnemySpawn : MonoBehaviour
         StartCoroutine(StartNextWave());
     }
 
-    private void SpawnWeightedEnemy() {
+    // returns the enemy type (1: bandit, 2: golem, 3: ghost)
+    private int SpawnWeightedEnemy() {
         // gets the total unlocked weight through the current wave
         int totalWeight = bandit_weight;
 
@@ -109,13 +119,17 @@ public class EnemySpawn : MonoBehaviour
         
         if (roll < bandit_weight) {
             SpawnEnemy(bandit, bandit_spawnPoints);
+            return 1;
         }
         else if (roll < bandit_weight + golem_weight && currentWave >= golemUnlockWave) {
             SpawnEnemy(golem, golem_spawnPoints);
+            return 2;
         }
         else if (currentWave >= ghostUnlockWave) {
             SpawnEnemy(ghost, ghost_spawnPoints);
+            return 3;
         }
+        return 4;
     }
     
     private void SpawnEnemy(GameObject prefab, List<Transform> spawnpoints)
@@ -139,7 +153,17 @@ public class EnemySpawn : MonoBehaviour
         }
         else {  
             Transform spawnPoint = spawnpoints[Random.Range(0, spawnpoints.Count)];
-            Instantiate(prefab, spawnPoint.position, spawnPoint.rotation);
+            GameObject enemy = Instantiate(prefab, spawnPoint.position, spawnPoint.rotation);
+            
+            // have the speed be a little random
+            if (prefab == bandit) {
+                float speed = enemy.GetComponent<EnemyController>().agent.speed;
+                enemy.GetComponent<EnemyController>().agent.speed = speed + Random.Range (-speed/8, speed/3);
+            }
+            else if (prefab == ghost) {
+                float speed = enemy.GetComponent<GhostController>().agent.speed;
+                enemy.GetComponent<GhostController>().agent.speed = speed + Random.Range (0, speed/3);
+            }
         }
     }
 }

@@ -37,12 +37,16 @@ public class EnemyController : MonoBehaviour
         capsule = GetComponent<CapsuleCollider>();
         m_Animator = GetComponentInChildren<Animator>();
         target = GameObject.FindWithTag("DoorTarget").transform;
-        agent = GetComponent<NavMeshAgent>();
+        //agent = GetComponent<NavMeshAgent>();
         rb = GetComponent<Rigidbody>();
         mat = GetComponentInChildren<Renderer>().material;
         m_Color = mat.color;
         currentHealth = maxHealth;
         agent.SetDestination(target.position);
+    }
+
+    void Awake() {
+        agent = GetComponent<NavMeshAgent>();
     }
     
     void Update()

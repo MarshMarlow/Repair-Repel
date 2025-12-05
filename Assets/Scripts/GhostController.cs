@@ -47,7 +47,6 @@ public class GhostController : MonoBehaviour
     {
         capsule = GetComponent<CapsuleCollider>();
         target = GameObject.FindWithTag("PlayerTarget").transform;
-        agent = GetComponent<NavMeshAgent>();
         renderers = GetComponentsInChildren<Renderer>();
         List<Material> matList = new List<Material>();
         
@@ -74,6 +73,10 @@ public class GhostController : MonoBehaviour
         
         currentHealth = maxHealth;
         agent.SetDestination(target.position);
+    }
+
+    void Awake() {
+        agent = GetComponent<NavMeshAgent>();
     }
     
     
