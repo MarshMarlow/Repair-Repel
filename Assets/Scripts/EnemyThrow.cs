@@ -13,6 +13,7 @@ public class EnemyThrow : MonoBehaviour {
     public float afterThrowDelay = 0.9f; // the time to wait after the peak
     public LightFades[] lightFades; // to adjust the lighting on the golem after the throw
     public Transform target; // the player target
+    private Transform tomtatoSpawn; //spawnpoint of tomato projectile
 
     void Start() {
         target = GameObject.FindGameObjectWithTag("PlayerTarget").transform;
@@ -21,6 +22,7 @@ public class EnemyThrow : MonoBehaviour {
         Vector3 lookPos = target.position - transform.position;
         lookPos.y = 0;
         transform.rotation = Quaternion.LookRotation(lookPos);
+        tomtatoSpawn = transform.GetChild(0);
     }
     
     void Update() {
@@ -37,6 +39,8 @@ public class EnemyThrow : MonoBehaviour {
         yield return new WaitForSeconds(throwDelay);
         
         // SUMMON PROJECTILE
+        
+        Instantiate(Resources.Load<GameObject>("Tomato"), tomtatoSpawn.position, tomtatoSpawn.rotation);
         
         yield return new WaitForSeconds(afterThrowDelay);
         m_Animator.SetBool("isThrowing", false);

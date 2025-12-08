@@ -8,6 +8,7 @@ public class EnemySpawn : MonoBehaviour
     public GameObject bandit; // the bandit prefab
     public GameObject golem; // the golem prefab
     public GameObject ghost; // the ghost prefab
+    public GameObject tomato; //the tomato prefab
 
     public Transform banditSpawnParent; // the parent holding the bandit spawns
     public Transform golemSpawnParent; // the parent holding the golem spawns
