@@ -63,7 +63,7 @@ public class Tomato : MonoBehaviour
 
     void OnTriggerEnter(Collider collider)
     {
-        if (collider.CompareTag("Shield"))
+        if (collider.CompareTag("Shield") && collider.gameObject.GetComponent<ObjectGrabbable>().isHeld())
         {
             Debug.Log("BLOCKED");
             Destroy(gameObject);
