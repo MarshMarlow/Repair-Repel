@@ -5,24 +5,39 @@ using UnityEngine;
 public class ObjectGrabbable : MonoBehaviour
 {
     
-    private Rigidbody objectRidgidbody;
+    private Rigidbody objectRigidbody;
     private Transform objectGrabPointTransform;
-
+    public bool autoOrient = true;
+    private Transform playerTransform;
+    
     public void Awake()
     {
-        objectRidgidbody = GetComponent<Rigidbody>();
+        playerTransform = GameObject.FindGameObjectWithTag("MainCamera").transform;
+        objectRigidbody = GetComponent<Rigidbody>();
     }
 
     public void Grab(Transform objectGrabPointTransform)
     {
         this.objectGrabPointTransform = objectGrabPointTransform;
-        objectRidgidbody.useGravity = false;
+        
+        // if auto orient, will stand upright and will rotate based on vr controller
+        if (autoOrient) {
+            // for vr controls
+            //Vector3 currentEuler = objectGrabPointTransform.rotation.eulerAngles;
+            //transform.rotation = Quaternion.Euler(0f, currentEuler.y, 0f);
+            
+            // for current first person mouse controls
+            Vector3 currentEuler = playerTransform.rotation.eulerAngles;
+            transform.rotation = Quaternion.Euler(0f, currentEuler.y, 0f);
+            //transform.rotation = Quaternion.identity;
+        }
+        objectRigidbody.useGravity = false;
     }
 
     public void Drop()
     {
         this.objectGrabPointTransform = null;
-        objectRidgidbody.useGravity = true;
+        objectRigidbody.useGravity = true;
     }
 
     private void FixedUpdate()
@@ -31,7 +46,16 @@ public class ObjectGrabbable : MonoBehaviour
         {
             float lerpSpeed = 10f;
             Vector3 newPos = Vector3.Lerp(transform.position, objectGrabPointTransform.position, Time.deltaTime * lerpSpeed);
-            objectRidgidbody.MovePosition(newPos);
+            objectRigidbody.MovePosition(newPos);
+            
+            // rotates the object currently based on where the player is looking - can change it to objectGrabPointTransform rotation once we integrate.
+            Vector3 currentEuler = playerTransform.rotation.eulerAngles;
+            transform.rotation = Quaternion.Euler(0f, currentEuler.y, 0f);
         }
+    }
+
+    // return whether the object is currently being held
+    public bool isHeld() {
+        return objectGrabPointTransform != null;
     }
 }
