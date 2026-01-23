@@ -96,7 +96,7 @@ public class Tomato : MonoBehaviour
         
         // hide the visuals
         visualModel.gameObject.SetActive(false);
-        visualModel.gameObject.GetComponent<TrailRenderer>().enabled = false;
+        GetComponent<TrailRenderer>().enabled = false;
         
         AudioSource audio = GetComponent<AudioSource>();
         audio.clip = clip;

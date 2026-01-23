@@ -44,7 +44,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.499
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -52,8 +52,8 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
+  MinDistance: 5
+  MaxDistance: 50
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -88,7 +88,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -423,7 +423,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4000012991189820, guid: 0a36d45e1b007e14b884de828f3b6938, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2636149556757811081}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1000014232435074, guid: 0a36d45e1b007e14b884de828f3b6938, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5865708640476595112}
   m_SourcePrefab: {fileID: 100100000, guid: 0a36d45e1b007e14b884de828f3b6938, type: 3}
 --- !u!4 &712809462920769084 stripped
 Transform:
@@ -440,6 +443,36 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4000012991189820, guid: 0a36d45e1b007e14b884de828f3b6938, type: 3}
   m_PrefabInstance: {fileID: 714486378921387156}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &714330793948667158 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1000014232435074, guid: 0a36d45e1b007e14b884de828f3b6938, type: 3}
+  m_PrefabInstance: {fileID: 714486378921387156}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5865708640476595112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 714330793948667158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 709e8b4ace20a9349bc78900ef3fc49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 6990136823683289442}
+  grassFootsteps:
+  - {fileID: 8300000, guid: 1649b5a0ac40e2d46941029b66831108, type: 3}
+  - {fileID: 8300000, guid: 529681d6978c981479276280ef160310, type: 3}
+  - {fileID: 8300000, guid: 43bc941762c58bc46ac027fa5464aabf, type: 3}
+  - {fileID: 8300000, guid: 109f500c44ef0cd4fb058c6391ae74fc, type: 3}
+  - {fileID: 8300000, guid: 0c90b31a3ad8e9848a32ce62d3686041, type: 3}
+  - {fileID: 8300000, guid: e911a048bfd94b8489daf57f1ae71a07, type: 3}
+  - {fileID: 8300000, guid: 094834a674c43f040af0678ff13db87c, type: 3}
+  stoneFootsteps:
+  - {fileID: 8300000, guid: c057437d9af959849acdddfc91ee86bc, type: 3}
+  - {fileID: 8300000, guid: 6bbbd5386a040d947a7d6903921bf984, type: 3}
+  - {fileID: 8300000, guid: befa98f84b9742744aeb21052db87a3c, type: 3}
 --- !u!1001 &1349538037263960197
 PrefabInstance:
   m_ObjectHideFlags: 0

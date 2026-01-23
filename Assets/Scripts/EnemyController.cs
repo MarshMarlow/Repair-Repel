@@ -43,17 +43,11 @@ public class EnemyController : MonoBehaviour
         m_Color = mat.color;
         currentHealth = maxHealth;
         agent.SetDestination(target.position);
+        footstepController = GetComponentInChildren<FootstepController>();
     }
 
     void Awake() {
         agent = GetComponent<NavMeshAgent>();
-    }
-    
-    void Update()
-    {
-        //if (canMove && !dead && agent.enabled) {
-        //    footstepController
-        //}
     }
     
     public bool isDead() {
@@ -75,6 +69,12 @@ public class EnemyController : MonoBehaviour
             agent.enabled = true;
             agent.isStopped = false;
             canMove = true;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other) {
+        if (other.CompareTag("FloorSwitch")) {
+            footstepController.setOnStone(true);
         }
     }
 

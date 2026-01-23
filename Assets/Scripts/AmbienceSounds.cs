@@ -43,22 +43,22 @@ public class AmbienceSounds : MonoBehaviour {
                 
                 Transform obj = soundSpawnPoints[Random.Range(0, soundSpawnPoints.Count)];
                 
-                AudioSource source = obj.GetComponent<AudioSource>();
+                AudioSource audiosource = obj.GetComponent<AudioSource>();
 
-                if (source != null) {
-                    source.spatialBlend = 1;
-                    source.volume = Random.Range(0.55f, 1.0f);
-                    source.pitch = Random.Range(0.9f, 1.1f);
-                    source.PlayOneShot(clip);
+                if (audiosource != null) {
+                    audiosource.spatialBlend = 1;
+                    audiosource.volume = Random.Range(0.55f, 1.0f);
+                    audiosource.pitch = Random.Range(0.9f, 1.1f);
+                    audiosource.PlayOneShot(clip);
                     
                     // pause the audio when the game is paused
-                    if (source.isPlaying && isPaused) {
-                        source.Pause();
+                    if (audiosource.isPlaying && isPaused) {
+                        audiosource.Pause();
                     }
 
                     // unpause the audio when the game is unpaused
                     if (!isPaused) {
-                        source.UnPause();
+                        audiosource.UnPause();
                     }
                 }
             }

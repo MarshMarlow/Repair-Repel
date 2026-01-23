@@ -27,7 +27,7 @@ public class EnemySpawn : MonoBehaviour
     public float spawnGolemInterval = 0.3f;
     public float spawnGhostInterval = 0.2f;
     
-    public float waveDelay = 20f; // how long between waves
+    public float waveDelay = 30f; // how long between waves
     
     public int currentWave = 0;
     private bool isSpawning = false;
@@ -98,6 +98,7 @@ public class EnemySpawn : MonoBehaviour
         currentWave++;
         Debug.Log("Starting wave " + currentWave);
         audiosource.PlayOneShot(wave_audio);
+        yield return new WaitForSeconds(9); // how long it takes for the war horn
         
 
         int enemiesToSpawn = 5 + currentWave * 3;
