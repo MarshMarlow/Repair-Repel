@@ -6,7 +6,8 @@ using UnityEngine;
 public class DoorTrigger : MonoBehaviour
 {
     CastleHealth castleHealth;
-
+    public AudioClip enterSound;
+    
     void Start() {
         castleHealth = GetComponent<CastleHealth>();
     }
@@ -15,6 +16,8 @@ public class DoorTrigger : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         // DECREASE CASTLE HP WHEN ENTERED 
         castleHealth.StartCoroutine(castleHealth.Damage(1));
+        PlayerAudio.Instance.PlaySound(enterSound, 0.5f);
+        
         Destroy(other.gameObject);
     }
 }

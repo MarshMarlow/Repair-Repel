@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class EnemySpawn : MonoBehaviour
 {
@@ -38,6 +39,13 @@ public class EnemySpawn : MonoBehaviour
 
     public int golemUnlockWave = 2;
     public int ghostUnlockWave = 5;
+    
+    // text on the UI
+    public TMP_Text waveText;
+    
+    // audio to start wave
+    public AudioClip wave_audio;
+    public AudioSource audiosource;
     
     public void Start() {
         // add the spawn points of each enemy into the respective lists
@@ -77,12 +85,20 @@ public class EnemySpawn : MonoBehaviour
         StartCoroutine(StartNextWave());
     }
 
+    
+    // update the UI text
+    void Update() {
+        waveText.text = "WAVE " + currentWave;
+    }
+    
     private IEnumerator StartNextWave() {
         if (isSpawning) yield break;
         isSpawning = true;
 
         currentWave++;
         Debug.Log("Starting wave " + currentWave);
+        audiosource.PlayOneShot(wave_audio);
+        
 
         int enemiesToSpawn = 5 + currentWave * 3;
 
