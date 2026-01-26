@@ -1,24 +1,33 @@
+// Class that allows the recharging of a the helmet lantern when placed on the table
+
 using UnityEngine;
 
 public class LampRecharge : MonoBehaviour
 {
-    [SerializeField] private Transform playerCameraTransform;
-    [SerializeField] private float interactDistance = 3.5f;
-    [SerializeField] private LayerMask interactLayerMask; // workbench layer
-    [SerializeField] private EquipLantern equipLantern;
+    [SerializeField] private float rechargeSecondsPerSecond = 3f;
+
+    private LanternFlashlight currentLantern;
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.TryGetComponent(out LanternFlashlight lantern))
+        {
+            currentLantern = lantern;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (currentLantern != null && other.GetComponent<LanternFlashlight>() == currentLantern)
+        {
+            currentLantern = null;
+        }
+    }
 
     private void Update()
     {
-        if (!Input.GetKeyDown(KeyCode.Mouse1)) return;
+        if (currentLantern == null) return;
 
-        if (Physics.Raycast(playerCameraTransform.position, playerCameraTransform.forward,
-            out RaycastHit hit, interactDistance, interactLayerMask))
-        {
-            // If we clicked a workbench, recharge equipped lantern, if lantern equipped
-            var lantern = equipLantern.GetEquippedLanternFlashlight();
-            if (lantern == null) return;
-
-            lantern.RechargeFull();
-        }
+        currentLantern.RechargeSeconds(rechargeSecondsPerSecond * Time.deltaTime);
     }
 }

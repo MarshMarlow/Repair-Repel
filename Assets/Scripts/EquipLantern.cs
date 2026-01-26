@@ -1,16 +1,21 @@
+// Class that allows the equipping of a helmet lantern to a head mount point using the key 'Q'
+// Also includes a feature to drop the helmet lantern on a table using 'Q' (The table it is currently on)
+
 using UnityEngine;
 
 public class EquipLantern : MonoBehaviour
 {
-    [Header("Raycast")]
     [SerializeField] private Transform playerCameraTransform;
     [SerializeField] private float equipDistance = 3.5f;
-    [SerializeField] private LayerMask lanternLayerMask; // put lanterns on this layer (or reuse Pickup)
+    [SerializeField] private LayerMask lanternLayerMask;
 
-    [Header("Mount Point")]
-    [SerializeField] private Transform headMountPoint; // empty object under camera
+    [SerializeField] private Transform headMountPoint; // mounting point
 
-    [Header("Input")]
+    [SerializeField] private LayerMask tableLayerMask;      // interactable layer
+    [SerializeField] private float dropCheckDistance = 3.0f;
+    [SerializeField] private Transform tableDropPoint;      // assigned to table_3
+
+
     [SerializeField] private KeyCode equipKey = KeyCode.Q;
 
     private ObjectGrabbable equippedLantern;
@@ -22,20 +27,18 @@ public class EquipLantern : MonoBehaviour
             if (equippedLantern == null)
                 TryEquipFromLook();
             else
-                DropEquipped();
+                TryDropOnTable();
         }
     }
 
-    private void TryEquipFromLook()
+    private void TryEquipFromLook() // equips the lantern on the head mount
     {
         if (Physics.Raycast(playerCameraTransform.position, playerCameraTransform.forward,
             out RaycastHit hit, equipDistance, lanternLayerMask))
         {
-            // If ray hits a child collider, find ObjectGrabbable on parent
             ObjectGrabbable grabbable = hit.transform.GetComponentInParent<ObjectGrabbable>();
             if (grabbable == null) return;
 
-            // Only allow equipping objects that are actually lanterns
             if (grabbable.GetComponent<LanternFlashlight>() == null) return;
 
             equippedLantern = grabbable;
@@ -43,12 +46,31 @@ public class EquipLantern : MonoBehaviour
         }
     }
 
-    private void DropEquipped()
+    private void TryDropOnTable()
     {
         if (equippedLantern == null) return;
 
-        equippedLantern.Drop();
-        equippedLantern = null;
+        if (Physics.Raycast(playerCameraTransform.position, playerCameraTransform.forward,
+            out RaycastHit hit, dropCheckDistance, tableLayerMask))
+        {
+            LanternFlashlight lf = equippedLantern.GetComponent<LanternFlashlight>();
+            if (lf != null)
+            {
+                lf.SetOn(false);
+            }
+
+            equippedLantern.Drop();
+            // snaps to mount point on table
+            Transform lanternTransform = equippedLantern.transform;
+            lanternTransform.position = tableDropPoint.position;
+            lanternTransform.rotation = tableDropPoint.rotation;
+
+            equippedLantern = null;
+        }
+        else
+        {
+            Debug.Log("Not looking at table, cannot drop lantern.");
+        }
     }
 
     public LanternFlashlight GetEquippedLanternFlashlight()
