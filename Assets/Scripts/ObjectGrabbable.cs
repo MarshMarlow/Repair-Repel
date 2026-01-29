@@ -50,10 +50,15 @@ public class ObjectGrabbable : MonoBehaviour
             
             // rotates the object currently based on where the player is looking - can change it to objectGrabPointTransform rotation once we integrate.
             Vector3 currentEuler = playerTransform.rotation.eulerAngles;
-            if(gameObject.CompareTag("Shield"))
+            if (gameObject.CompareTag("Shield"))
             {
                 transform.rotation = Quaternion.Euler(90f, currentEuler.y, 0f);
-            } else {
+            } 
+            else if (gameObject.CompareTag("Helmet")) // allows for light (from helmet light) to follow camera vertically
+            {
+                 transform.rotation = objectGrabPointTransform.rotation;
+            }
+            else {
                 transform.rotation = Quaternion.Euler(0f, currentEuler.y, 0f);
             }
         }
