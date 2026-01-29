@@ -12,6 +12,9 @@ TagManager:
   - Enemy
   - PlayerTomato
   - Shield
+  - FloorSwitch
+  - Weapon
+  - Helmet
   layers:
   - Default
   - TransparentFX
