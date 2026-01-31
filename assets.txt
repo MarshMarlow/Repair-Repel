@@ -127,3 +127,6 @@ https://www.youtube.com/watch?v=WdpcUEp9JCg
 Fixing Tool Audio
 https://pixabay.com/sound-effects/film-special-effects-anvil-hit-2-14845/
 https://pixabay.com/sound-effects/film-special-effects-anvil-hit-1-103967/
+
+Hit Effects
+https://assetstore.unity.com/packages/vfx/particles/hit-effects-free-284613

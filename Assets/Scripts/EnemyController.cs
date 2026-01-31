@@ -114,7 +114,7 @@ public class EnemyController : MonoBehaviour
             m_Animator.SetBool("isDead", dead);
             
             // play default spawn sound
-            if (UnityEngine.Random.value <= 0.5) {
+            if (UnityEngine.Random.value <= 0.97) {
                 hitAudioSource.volume = 0.3f;
                 hitAudioSource.PlayOneShot(arrow_hit_sound);    
             }
