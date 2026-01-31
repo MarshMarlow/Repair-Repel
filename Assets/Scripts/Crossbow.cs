@@ -12,6 +12,12 @@ public class Crossbow : MonoBehaviour
     private float timer;
     private ObjectGrabbable objectGrabbable;
     public GameObject crosshairUI; //REMOVE FOR VR
+
+    private bool playedReloadSound = true;
+    
+    public AudioSource audioSource;
+    public AudioClip shootingSound;
+    public AudioClip reloadSound;
     
     void Awake()
     {
@@ -25,10 +31,18 @@ public class Crossbow : MonoBehaviour
             timer -= Time.deltaTime / fireRate;
         }
 
+        if (timer <= reloadSound.length + 10 && !playedReloadSound) {
+            audioSource.volume = 0.1f;
+            audioSource.PlayOneShot(reloadSound);
+            playedReloadSound = true;
+        }
+
         //if(Input.GetKeyDown(KeyCode.E)  && objectGrabbable.isHeld() && timer <= 0 ) //if on laptop and u cant right click u can use this one
-        if (Input.GetMouseButtonDown(1) && objectGrabbable.isHeld() && timer <= 0)
-        {
+        if (Input.GetMouseButtonDown(1) && objectGrabbable.isHeld() && timer <= 0) {
+            audioSource.volume = 0.3f;
+            audioSource.PlayOneShot(shootingSound);
             Shoot();
+            playedReloadSound = false;
         }
     }
 

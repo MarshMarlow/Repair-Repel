@@ -19,6 +19,10 @@ public class EquipLantern : MonoBehaviour
     [SerializeField] private KeyCode equipKey = KeyCode.Q;
 
     private ObjectGrabbable equippedLantern;
+    public AudioSource audioSource;
+    public AudioClip put_on;
+    public AudioClip put_off;
+    
 
     private void Update()
     {
@@ -42,6 +46,7 @@ public class EquipLantern : MonoBehaviour
             if (grabbable.GetComponent<LanternFlashlight>() == null) return;
 
             equippedLantern = grabbable;
+            audioSource.PlayOneShot(put_on);
             equippedLantern.Grab(headMountPoint);
         }
     }
@@ -59,6 +64,7 @@ public class EquipLantern : MonoBehaviour
                 lf.SetOn(false);
             }
 
+            audioSource.PlayOneShot(put_off);
             equippedLantern.Drop();
             // snaps to mount point on table
             Transform lanternTransform = equippedLantern.transform;

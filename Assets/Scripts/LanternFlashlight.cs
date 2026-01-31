@@ -9,6 +9,10 @@ public class LanternFlashlight : MonoBehaviour
     [SerializeField] private float maxOnTimeSeconds = 60f;
     [SerializeField] private float remainingSeconds;
 
+    public AudioSource audioSource;
+    public AudioClip turn_on;
+    public AudioClip turn_off;
+    
     private bool isOn;
     private bool isEmpty;
 
@@ -41,6 +45,7 @@ public class LanternFlashlight : MonoBehaviour
             {
                 remainingSeconds = 0f;
                 isEmpty = true; // flashlight battery is dead
+                
                 SetOn(false); // turn off flashlight
             }
         }
@@ -53,7 +58,15 @@ public class LanternFlashlight : MonoBehaviour
             {
                 return;
             }
-
+            
+            // turn on
+            if (isOn) {
+                audioSource.PlayOneShot(turn_off);
+            }
+            // turn off
+            else {
+                audioSource.PlayOneShot(turn_on);
+            }
             SetOn(!isOn); // turn on
         }
         
@@ -90,6 +103,15 @@ public class LanternFlashlight : MonoBehaviour
 
         if (remainingSeconds > 0f)
             isEmpty = false;
-        }
-
     }
+
+    public float getRemainingSeconds() {
+        return remainingSeconds;
+    }
+
+    public float getMaxSeconds() {
+        return maxOnTimeSeconds;
+    }
+
+}
+

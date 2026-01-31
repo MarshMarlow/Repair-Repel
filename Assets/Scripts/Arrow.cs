@@ -30,7 +30,7 @@ public class Arrow : MonoBehaviour
 
         if (enemy != null)
         {
-            StartCoroutine(enemy.TakeDamage(damage));
+            enemy.StartCoroutine(enemy.TakeDamage(damage));
         }
 
         Destroy(gameObject);

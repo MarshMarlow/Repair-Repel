@@ -21,6 +21,10 @@ public class EnemyController : MonoBehaviour
     private CapsuleCollider capsule; // for turning off after death
     
     private bool canMove = false; // for death and pause
+    public AudioSource hitAudioSource;
+    public AudioClip arrow_hit_sound;
+    public AudioClip ouch_sound;
+    
     
     [HideInInspector]
     public NavMeshAgent agent;
@@ -48,6 +52,7 @@ public class EnemyController : MonoBehaviour
 
     void Awake() {
         agent = GetComponent<NavMeshAgent>();
+        agent.updateRotation = false;
     }
     
     public bool isDead() {
@@ -79,6 +84,7 @@ public class EnemyController : MonoBehaviour
     }
 
     public IEnumerator TakeDamage(int damage) {
+        Debug.Log("1");
         if (dead) yield break;
 
         // if not dead, is moving, and can move, update colour to damaged colour
@@ -103,6 +109,19 @@ public class EnemyController : MonoBehaviour
             agent.enabled = false;
             dead = true;
             m_Animator.SetBool("isDead", dead);
+            
+            // play default spawn sound
+            if (UnityEngine.Random.value <= 0.5) {
+                hitAudioSource.volume = 0.3f;
+                hitAudioSource.PlayOneShot(arrow_hit_sound);    
+            }
+            // play rare spawn sound
+            else {
+                hitAudioSource.volume = 0.1f;
+                hitAudioSource.pitch = 0.9f;
+                hitAudioSource.PlayOneShot(ouch_sound);
+            }
+
             capsule.enabled = false;
             rb.velocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;

@@ -340,7 +340,7 @@ MonoBehaviour:
   target: {fileID: 0}
   throwSound: {fileID: 8300000, guid: 9e43b34c980749947a97418ef12a2951, type: 3}
   audioSource: {fileID: 0}
-  tomatoPrefab: {fileID: 7711825394073895313, guid: 0718c8b31df11bd408bffcfd3729b04a, type: 3}
+  tomatoPrefab: {fileID: 7711825394073895313, guid: 0ef9b94d0c427034783da3d49825812d, type: 3}
 --- !u!114 &8180403731709955819
 MonoBehaviour:
   m_ObjectHideFlags: 0

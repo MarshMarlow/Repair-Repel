@@ -23,9 +23,9 @@ public class EnemySpawn : MonoBehaviour
     
     public float spawnInterval = 0.35f; // how long it takes per spawning an enemy
     
-    public float spawnBanditInterval = 0.35f;
-    public float spawnGolemInterval = 0.3f;
-    public float spawnGhostInterval = 0.2f;
+    public float spawnBanditInterval = 0.45f;
+    public float spawnGolemInterval = 0.35f;
+    public float spawnGhostInterval = 0.25f;
     
     public float waveDelay = 30f; // how long between waves
     
@@ -89,6 +89,9 @@ public class EnemySpawn : MonoBehaviour
     // update the UI text
     void Update() {
         waveText.text = "WAVE " + currentWave;
+        //if (Input.GetKeyDown(KeyCode.P)) {
+        //    SpawnEnemy(ghost, ghost_spawnPoints);
+        //}
     }
     
     private IEnumerator StartNextWave() {
@@ -175,8 +178,10 @@ public class EnemySpawn : MonoBehaviour
             
             // have the speed be a little random
             if (prefab == bandit) {
-                float speed = enemy.GetComponent<EnemyController>().agent.speed;
-                enemy.GetComponent<EnemyController>().agent.speed = speed + Random.Range (-speed/8, speed/3);
+                //float speed = enemy.GetComponent<EnemyController>().agent.speed;
+                float speed = enemy.GetComponentInChildren<EnemyController>().agent.speed;
+                enemy.GetComponentInChildren<EnemyController>().agent.speed = speed + Random.Range (-speed/8, speed/3);
+                //enemy.GetComponent<EnemyController>().agent.speed = speed + Random.Range (-speed/8, speed/3);
             }
             else if (prefab == ghost) {
                 float speed = enemy.GetComponent<GhostController>().agent.speed;

@@ -11,6 +11,9 @@ public class HammerHit : MonoBehaviour
 
     [SerializeField] private bool requireAttackInput = false;
 
+    public AudioSource audioSource;
+    public AudioClip hammer_hit1;
+    public AudioClip hammer_hit2;
 
     private bool IsAttackingNow()
     {
@@ -30,6 +33,14 @@ public class HammerHit : MonoBehaviour
         if (!weapon.IsOnAnvil)
             return;
 
+        // play anvil sound
+        audioSource.pitch = Random.Range(0.9f, 1.1f);
+        if (Random.value <= 0.5) {
+            audioSource.PlayOneShot(hammer_hit1);    
+        }
+        else {
+            audioSource.PlayOneShot(hammer_hit2);
+        }
         weapon.Repair(repairPerHit);
     }
 }
