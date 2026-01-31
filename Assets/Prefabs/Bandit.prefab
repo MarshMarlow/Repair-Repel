@@ -357,10 +357,13 @@ MonoBehaviour:
   damageColor: {r: 0.7509433, g: 0.145938, b: 0.145938, a: 1}
   maxHealth: 1
   currentHealth: 0
-  deathDelay: 1.4
+  deathDelay: 1
+  particleDelay: 2
   hitAudioSource: {fileID: 5468483423304286951}
   arrow_hit_sound: {fileID: 8300000, guid: cf324c3d440ab7d499eec4446b5aaa09, type: 3}
   ouch_sound: {fileID: 8300000, guid: d69173f8564e1f648982e3fafb97cf52, type: 3}
+  enemyModel: {fileID: 714330793948667158}
+  deathParticlePrefab: {fileID: 4161699073111457227, guid: 2423c96ad7be1234ca4ebd68abbf14de, type: 3}
   agent: {fileID: 0}
   rb: {fileID: 0}
   mat: {fileID: 0}

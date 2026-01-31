@@ -17,6 +17,7 @@ public class EnemyController : MonoBehaviour
     public int currentHealth; // current health
     
     public float deathDelay = 1.2f; // the delay between playing animation, then destroying the gameobject
+    public float particleDelay = 2f;
     private bool dead = false; 
     private CapsuleCollider capsule; // for turning off after death
     
@@ -25,6 +26,9 @@ public class EnemyController : MonoBehaviour
     public AudioClip arrow_hit_sound;
     public AudioClip ouch_sound;
     
+    public GameObject enemyModel;
+    // particle to spawn in when dead
+    public GameObject deathParticlePrefab;
     
     [HideInInspector]
     public NavMeshAgent agent;
@@ -52,7 +56,7 @@ public class EnemyController : MonoBehaviour
 
     void Awake() {
         agent = GetComponent<NavMeshAgent>();
-        agent.updateRotation = false;
+        //agent.updateRotation = false;
     }
     
     public bool isDead() {
@@ -84,7 +88,6 @@ public class EnemyController : MonoBehaviour
     }
 
     public IEnumerator TakeDamage(int damage) {
-        Debug.Log("1");
         if (dead) yield break;
 
         // if not dead, is moving, and can move, update colour to damaged colour
@@ -127,10 +130,20 @@ public class EnemyController : MonoBehaviour
             rb.angularVelocity = Vector3.zero;
             rb.isKinematic = true;
             yield return new WaitForSeconds(deathDelay);
-            Destroy(gameObject);
+            StartCoroutine(Die());
         }
         else if (!dead) {
             agent.isStopped = false;
         }
+    }
+    
+    // spawn a particle before dying
+    private IEnumerator Die() {
+        Quaternion rotation = Quaternion.Euler(-90, 0, 0);
+        GameObject particle = Instantiate(deathParticlePrefab, transform.position, rotation);
+        enemyModel.SetActive(false);
+        yield return new WaitForSeconds(particleDelay);
+        Destroy(particle);
+        Destroy(gameObject);
     }
 }
