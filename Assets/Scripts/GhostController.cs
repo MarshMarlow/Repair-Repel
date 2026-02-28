@@ -23,13 +23,20 @@ public class GhostController : MonoBehaviour
     
     // for taking damage timers
     private bool isTakingContinuousDamage = false;
-    private float damageTickRate = 0.5f; // damage every 0.5 seconds
+    private float damageTickRate = 0.125f; // damage every 0.125 seconds
     private float lastDamageTime = 0f;
 
     // particle to spawn in when dead
     public GameObject deathParticlePrefab;
 
     public GameObject enemyModel;
+
+    public AudioSource audiosource;
+    public AudioSource spawnaudiosource;
+    public AudioClip deathSound;
+    public AudioClip spawnSound1;
+    public AudioClip spawnSound2;
+    public AudioClip damageSound;
     
     [HideInInspector]
     public NavMeshAgent agent;
@@ -77,6 +84,16 @@ public class GhostController : MonoBehaviour
 
     void Awake() {
         agent = GetComponent<NavMeshAgent>();
+        
+        // play default spawn sound
+        if (UnityEngine.Random.value <= 0.95) {
+            spawnaudiosource.PlayOneShot(spawnSound1);    
+        }
+        // play rare spawn sound
+        else {
+            spawnaudiosource.volume = 0.8f;
+            spawnaudiosource.PlayOneShot(spawnSound2);
+        }
     }
     
     
@@ -105,7 +122,7 @@ public class GhostController : MonoBehaviour
     public void ApplyContinuousDamage(int damage) {
         if (dead) return;
 
-        // applies damage every 0.5s
+        // applies damage every 0.125s
         if (Time.time - lastDamageTime >= damageTickRate) {
             lastDamageTime = Time.time;
             TakeDamage(damage);
@@ -129,11 +146,19 @@ public class GhostController : MonoBehaviour
         if (currentHealth < 0) currentHealth = 0;
     
         if (currentHealth == 0 && !dead) {
+            audiosource.volume = 1f;
+            audiosource.pitch = 1f;
+            audiosource.PlayOneShot(deathSound);
             agent.isStopped = true;
             agent.enabled = false;
             dead = true;
             capsule.enabled = false;
             StartCoroutine(Die());
+        }
+        else {
+            audiosource.volume = 0.1f;
+            audiosource.pitch = 0.7f;
+            audiosource.PlayOneShot(damageSound);
         }
     }
 

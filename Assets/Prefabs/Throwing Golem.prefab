@@ -294,6 +294,7 @@ GameObject:
   - component: {fileID: 7524383632348033696}
   - component: {fileID: 8180403731709955819}
   - component: {fileID: 314724241668004126}
+  - component: {fileID: 6453813493565806937}
   m_Layer: 0
   m_Name: Throwing Golem
   m_TagString: Enemy
@@ -337,6 +338,9 @@ MonoBehaviour:
   afterThrowDelay: 1
   lightFades: []
   target: {fileID: 0}
+  throwSound: {fileID: 8300000, guid: 9e43b34c980749947a97418ef12a2951, type: 3}
+  audioSource: {fileID: 0}
+  tomatoPrefab: {fileID: 7711825394073895313, guid: 0ef9b94d0c427034783da3d49825812d, type: 3}
 --- !u!114 &8180403731709955819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -371,6 +375,102 @@ MonoBehaviour:
   - {fileID: 2728605554309793676}
   max_intensity: 12
   fade_duration: 3
+--- !u!82 &6453813493565806937
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4197723436826384015}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 0.675
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 5
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &5537166267515508932
 GameObject:
   m_ObjectHideFlags: 0
@@ -490,7 +590,7 @@ Transform:
   m_GameObject: {fileID: 6716653816145571964}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.6999512, y: 10.204999, z: -6.549988}
+  m_LocalPosition: {x: 3.6999512, y: 10.204999, z: 8.54}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []

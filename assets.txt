@@ -53,3 +53,80 @@ https://assetstore.unity.com/packages/vfx/particles/polygonal-s-low-poly-particl
 
 Tomato:
 https://assetstore.unity.com/packages/3d/props/food/food-pack-free-demo-225294
+
+Audio for Golem Throw:
+https://pixabay.com/sound-effects/film-special-effects-earth-spell-393923/
+
+Church Bell
+https://pixabay.com/sound-effects/city-old-church-bell-6298/
+
+Night Ambience Audio
+https://pixabay.com/sound-effects/nature-night-ambience-17064/
+
+Owl Audio
+https://pixabay.com/sound-effects/nature-owl-hooting-223549/
+https://pixabay.com/sound-effects/film-special-effects-tawny-owl-in-molkom-sweden-99897/
+
+Crow Audio
+https://pixabay.com/sound-effects/nature-creepy-crow-caw-322991/
+https://pixabay.com/sound-effects/nature-crow-sound-effect-hd-336784/
+
+Crickets Audio
+https://pixabay.com/sound-effects/nature-crickets-90339/
+https://pixabay.com/sound-effects/nature-chirping-sound-393130/
+
+Tomato Blocked Audio
+https://pixabay.com/sound-effects/film-special-effects-knife-throw-2-88028/
+
+Tomato Hit Audio
+https://pixabay.com/sound-effects/film-special-effects-wet-squelchy-impact-352302/
+
+War Horn Audio
+https://www.youtube.com/watch?v=uHHMV8hukBI
+
+Light
+https://assetstore.unity.com/packages/3d/props/electronics/flashlight-18972
+
+Grass Audio
+https://pixabay.com/sound-effects/film-special-effects-running-in-grass-6237/
+
+Stone Audio
+https://pixabay.com/sound-effects/film-special-effects-st3-footstep-sfx-323056/
+https://pixabay.com/sound-effects/film-special-effects-st1-footstep-sfx-323053/
+https://pixabay.com/sound-effects/film-special-effects-st2-footstep-sfx-323055/
+
+Ghost Taking Damage Audio
+https://pixabay.com/sound-effects/film-special-effects-electronic-element-burn-spark-1-248606/
+
+Ghost Dying Audio
+https://www.youtube.com/watch?v=SoNv1HE7UWo
+
+Ghost Spawning Audio
+https://pixabay.com/sound-effects/horror-ghost-horror-sound-382709/
+https://pixabay.com/sound-effects/horror-spooky-cartoon-ghost-wooo-430234/
+
+Crossbow Shooting Audio
+https://freesound.org/people/Erdie/sounds/65733/
+
+Crossbow Reloading Audio
+https://pixabay.com/sound-effects/film-special-effects-mini-crossbow-foley-102860/
+
+Bandit Dying Audio
+https://pixabay.com/sound-effects/film-special-effects-characterouch2-163912/
+https://pixabay.com/sound-effects/film-special-effects-arrow-impact-87260/
+
+Headlamp Turning On and Off Audio
+https://pixabay.com/sound-effects/film-special-effects-click-234708/
+
+Headlamp Equip Audio
+https://pixabay.com/sound-effects/film-special-effects-item-equip-6904/
+
+Headlamp Recharging Audio
+https://www.youtube.com/watch?v=WdpcUEp9JCg
+
+Fixing Tool Audio
+https://pixabay.com/sound-effects/film-special-effects-anvil-hit-2-14845/
+https://pixabay.com/sound-effects/film-special-effects-anvil-hit-1-103967/
+
+Hit Effects
+https://assetstore.unity.com/packages/vfx/particles/hit-effects-free-284613

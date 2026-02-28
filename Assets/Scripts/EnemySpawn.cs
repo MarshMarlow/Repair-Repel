@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class EnemySpawn : MonoBehaviour
 {
@@ -22,11 +23,11 @@ public class EnemySpawn : MonoBehaviour
     
     public float spawnInterval = 0.35f; // how long it takes per spawning an enemy
     
-    public float spawnBanditInterval = 0.35f;
-    public float spawnGolemInterval = 0.3f;
-    public float spawnGhostInterval = 0.2f;
+    public float spawnBanditInterval = 0.45f;
+    public float spawnGolemInterval = 0.35f;
+    public float spawnGhostInterval = 0.25f;
     
-    public float waveDelay = 20f; // how long between waves
+    public float waveDelay = 30f; // how long between waves
     
     public int currentWave = 0;
     private bool isSpawning = false;
@@ -38,6 +39,13 @@ public class EnemySpawn : MonoBehaviour
 
     public int golemUnlockWave = 2;
     public int ghostUnlockWave = 5;
+    
+    // text on the UI
+    public TMP_Text waveText;
+    
+    // audio to start wave
+    public AudioClip wave_audio;
+    public AudioSource audiosource;
     
     public void Start() {
         // add the spawn points of each enemy into the respective lists
@@ -77,12 +85,24 @@ public class EnemySpawn : MonoBehaviour
         StartCoroutine(StartNextWave());
     }
 
+    
+    // update the UI text
+    void Update() {
+        waveText.text = "WAVE " + currentWave;
+        //if (Input.GetKeyDown(KeyCode.P)) {
+        //    SpawnEnemy(ghost, ghost_spawnPoints);
+        //}
+    }
+    
     private IEnumerator StartNextWave() {
         if (isSpawning) yield break;
         isSpawning = true;
 
         currentWave++;
         Debug.Log("Starting wave " + currentWave);
+        audiosource.PlayOneShot(wave_audio);
+        yield return new WaitForSeconds(9); // how long it takes for the war horn
+        
 
         int enemiesToSpawn = 5 + currentWave * 3;
 
@@ -158,8 +178,10 @@ public class EnemySpawn : MonoBehaviour
             
             // have the speed be a little random
             if (prefab == bandit) {
-                float speed = enemy.GetComponent<EnemyController>().agent.speed;
-                enemy.GetComponent<EnemyController>().agent.speed = speed + Random.Range (-speed/8, speed/3);
+                //float speed = enemy.GetComponent<EnemyController>().agent.speed;
+                float speed = enemy.GetComponentInChildren<EnemyController>().agent.speed;
+                enemy.GetComponentInChildren<EnemyController>().agent.speed = speed + Random.Range (-speed/8, speed/3);
+                //enemy.GetComponent<EnemyController>().agent.speed = speed + Random.Range (-speed/8, speed/3);
             }
             else if (prefab == ghost) {
                 float speed = enemy.GetComponent<GhostController>().agent.speed;

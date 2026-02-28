@@ -12,6 +12,9 @@ TagManager:
   - Enemy
   - PlayerTomato
   - Shield
+  - FloorSwitch
+  - Weapon
+  - Helmet
   layers:
   - Default
   - TransparentFX
@@ -20,10 +23,10 @@ TagManager:
   - Water
   - UI
   - Ghost
-  - 
-  - 
-  - 
-  - 
+  - Interactable
+  - Lantern
+  - Crossbow
+  - Arrow
   - 
   - 
   - 

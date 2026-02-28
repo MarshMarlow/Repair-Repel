@@ -17,10 +17,18 @@ public class EnemyController : MonoBehaviour
     public int currentHealth; // current health
     
     public float deathDelay = 1.2f; // the delay between playing animation, then destroying the gameobject
+    public float particleDelay = 2f;
     private bool dead = false; 
     private CapsuleCollider capsule; // for turning off after death
     
     private bool canMove = false; // for death and pause
+    public AudioSource hitAudioSource;
+    public AudioClip arrow_hit_sound;
+    public AudioClip ouch_sound;
+    
+    public GameObject enemyModel;
+    // particle to spawn in when dead
+    public GameObject deathParticlePrefab;
     
     [HideInInspector]
     public NavMeshAgent agent;
@@ -43,17 +51,12 @@ public class EnemyController : MonoBehaviour
         m_Color = mat.color;
         currentHealth = maxHealth;
         agent.SetDestination(target.position);
+        footstepController = GetComponentInChildren<FootstepController>();
     }
 
     void Awake() {
         agent = GetComponent<NavMeshAgent>();
-    }
-    
-    void Update()
-    {
-        //if (canMove && !dead && agent.enabled) {
-        //    footstepController
-        //}
+        //agent.updateRotation = false;
     }
     
     public bool isDead() {
@@ -75,6 +78,12 @@ public class EnemyController : MonoBehaviour
             agent.enabled = true;
             agent.isStopped = false;
             canMove = true;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other) {
+        if (other.CompareTag("FloorSwitch")) {
+            footstepController.setOnStone(true);
         }
     }
 
@@ -103,15 +112,38 @@ public class EnemyController : MonoBehaviour
             agent.enabled = false;
             dead = true;
             m_Animator.SetBool("isDead", dead);
+            
+            // play default spawn sound
+            if (UnityEngine.Random.value <= 0.97) {
+                hitAudioSource.volume = 0.3f;
+                hitAudioSource.PlayOneShot(arrow_hit_sound);    
+            }
+            // play rare spawn sound
+            else {
+                hitAudioSource.volume = 0.1f;
+                hitAudioSource.pitch = 0.9f;
+                hitAudioSource.PlayOneShot(ouch_sound);
+            }
+
             capsule.enabled = false;
             rb.velocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
             rb.isKinematic = true;
             yield return new WaitForSeconds(deathDelay);
-            Destroy(gameObject);
+            StartCoroutine(Die());
         }
         else if (!dead) {
             agent.isStopped = false;
         }
+    }
+    
+    // spawn a particle before dying
+    private IEnumerator Die() {
+        Quaternion rotation = Quaternion.Euler(-90, 0, 0);
+        GameObject particle = Instantiate(deathParticlePrefab, transform.position, rotation);
+        enemyModel.SetActive(false);
+        yield return new WaitForSeconds(particleDelay);
+        Destroy(particle);
+        Destroy(gameObject);
     }
 }
