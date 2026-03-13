@@ -61,7 +61,8 @@ public class EnemySpawn : MonoBehaviour
             golem_inUse_time.Add(0);
         }
         // start the summon wave
-        StartSummon();
+        
+        StartCoroutine(StartSummon());
     }
     
     // resets all variables
@@ -81,11 +82,11 @@ public class EnemySpawn : MonoBehaviour
         }
     }
     
-    public void StartSummon() {
+    public IEnumerator StartSummon() {
+        yield return new WaitForSeconds(8);
         StartCoroutine(StartNextWave());
     }
 
-    
     // update the UI text
     void Update() {
         waveText.text = "WAVE " + currentWave;
