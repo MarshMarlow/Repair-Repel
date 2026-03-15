@@ -14,6 +14,8 @@ public class Crossbow : MonoBehaviour
     public GameObject crosshairUI; //REMOVE FOR VR
 
     private bool playedReloadSound = true;
+    private WeaponDurability weaponDurability;
+
     
     public AudioSource audioSource;
     public AudioClip shootingSound;
@@ -22,6 +24,7 @@ public class Crossbow : MonoBehaviour
     void Awake()
     {
         objectGrabbable = GetComponent<ObjectGrabbable>();
+        weaponDurability = GetComponent<WeaponDurability>();
     }
     void Update()
     {
@@ -37,14 +40,17 @@ public class Crossbow : MonoBehaviour
             playedReloadSound = true;
         }
 
-        //if(Input.GetKeyDown(KeyCode.E)  && objectGrabbable.isHeld() && timer <= 0 ) //if on laptop and u cant right click u can use this one
-        if (Input.GetMouseButtonDown(1) && objectGrabbable.isHeld() && timer <= 0) {
-            audioSource.volume = 0.3f;
-            audioSource.PlayOneShot(shootingSound);
-            Shoot();
-            playedReloadSound = false;
+        if(Input.GetKeyDown(KeyCode.E)  && objectGrabbable.isHeld() && timer <= 0 ) //if on laptop and u cant right click u can use this one
+        // if (Input.GetMouseButtonDown(1) && objectGrabbable.isHeld() && timer <= 0) {
+            if (weaponDurability != null && !weaponDurability.IsBroken())
+            {
+                audioSource.volume = 0.3f;
+                audioSource.PlayOneShot(shootingSound);
+                Shoot();
+                weaponDurability.Damage(1);
+                playedReloadSound = false;
+            }
         }
-    }
 
     void Shoot()
     {
