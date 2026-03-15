@@ -130,3 +130,6 @@ https://pixabay.com/sound-effects/film-special-effects-anvil-hit-1-103967/
 
 Hit Effects
 https://assetstore.unity.com/packages/vfx/particles/hit-effects-free-284613
+
+Lantern Charging Station: 
+https://assetstore.unity.com/packages/3d/props/sci-fi-battery-barrel-packs-285735
