@@ -66,21 +66,41 @@ public class Tomato : MonoBehaviour
 
     void OnTriggerEnter(Collider collider)
     {
-        if (collider.CompareTag("Shield") && collider.gameObject.GetComponent<ObjectGrabbable>().isHeld())
+        if (collider.CompareTag("Shield"))
         {
-            Debug.Log("BLOCKED");
-            // play audio that it blocked
-            PlayImpact(blocked_clip);
-            //Destroy(gameObject);
-            return;
+            // get the shield components
+            ObjectGrabbable shieldGrabbable = collider.GetComponentInParent<ObjectGrabbable>();
+            WeaponDurability shieldDurability = collider.GetComponentInParent<WeaponDurability>();
+
+            // check if shield is being held
+            bool shieldHeld = shieldGrabbable != null && shieldGrabbable.isHeld();
+
+            // check if shield still has durability left
+            bool shieldCanBlock = shieldDurability != null && !shieldDurability.IsBroken();
+
+            if (shieldHeld && shieldCanBlock)
+            {
+                Debug.Log("BLOCKED");
+
+                // damage the shield durability when blocking
+                shieldDurability.Damage(1);
+
+                // optional debug to see durability drop
+                Debug.Log("Shield durability: " + shieldDurability.CurrentDurability + "/" + shieldDurability.MaxDurability);
+
+                // play audio that it blocked
+                PlayImpact(blocked_clip);
+
+                return;
+            }
         }
+
         if (collider.CompareTag("PlayerTomato"))
         {
             Debug.Log("HIT");
             collider.gameObject.GetComponent<TomatoHit>().FlashRed();
             // play audio that it hit player
             PlayImpact(hit_clip);
-            //Destroy(gameObject);
             return;
         }
 
@@ -88,20 +108,21 @@ public class Tomato : MonoBehaviour
     }
 
     // plays the audio, then destroys the gameobject
-    void PlayImpact(AudioClip clip) {
+    void PlayImpact(AudioClip clip)
+    {
         // stop tomato from moving and collisions
         rb.velocity = Vector3.zero;
         rb.isKinematic = true;
         GetComponent<Collider>().enabled = false;
-        
+
         // hide the visuals
         visualModel.gameObject.SetActive(false);
         GetComponent<TrailRenderer>().enabled = false;
-        
+
         AudioSource audio = GetComponent<AudioSource>();
         audio.clip = clip;
         audio.Play();
-        
+
         Destroy(gameObject, clip.length);
     }
 }

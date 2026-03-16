@@ -6,7 +6,7 @@ public class WeaponDurability : MonoBehaviour
     [SerializeField] private int maxDurability = 10;
     [SerializeField] private int currentDurability = 10;
 
-    public bool IsOnAnvil { get; private set; } // tracks if weapon is on anvil
+    public bool IsOnAnvil { get; private set; }
 
     private ObjectGrabbable grabbable;
 
@@ -21,7 +21,7 @@ public class WeaponDurability : MonoBehaviour
 
     private void Update()
     {
-        if (IsOnAnvil && grabbable != null && grabbable.isHeld()) //if picked up, then no longer on anvil
+        if (IsOnAnvil && grabbable != null && grabbable.isHeld())
         {
             IsOnAnvil = false;
         }
@@ -29,10 +29,10 @@ public class WeaponDurability : MonoBehaviour
 
     public void SetOnAnvil(bool onAnvil)
     {
-        if (onAnvil && grabbable != null && grabbable.isHeld()) // not on anvil
+        if (onAnvil && grabbable != null && grabbable.isHeld())
             return;
 
-        IsOnAnvil = onAnvil; // on anvil
+        IsOnAnvil = onAnvil;
     }
 
     public void Repair(int amount)
@@ -45,6 +45,18 @@ public class WeaponDurability : MonoBehaviour
         currentDurability = Mathf.Clamp(currentDurability - amount, 0, maxDurability);
     }
 
-    public bool IsBroken() => currentDurability <= 0;
-    public bool IsFull() => currentDurability >= maxDurability;
+    public bool IsBroken()
+    {
+        return currentDurability <= 0;
+    }
+
+    public bool IsFull()
+    {
+        return currentDurability >= maxDurability;
+    }
+
+    public bool CanBlock()
+    {
+        return !IsBroken();
+    }
 }
