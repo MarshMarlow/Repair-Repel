@@ -47,7 +47,7 @@ public class EquipLantern : MonoBehaviour
 
             equippedLantern = grabbable;
             audioSource.PlayOneShot(put_on);
-            equippedLantern.Grab(headMountPoint);
+            equippedLantern.Grab();
         }
     }
 

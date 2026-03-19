@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Oculus.Interaction;
 using UnityEngine;
 
 public class Crossbow : MonoBehaviour
@@ -11,7 +12,7 @@ public class Crossbow : MonoBehaviour
     public GameObject arrowPrefab;
     private float timer;
     private ObjectGrabbable objectGrabbable;
-    public GameObject crosshairUI; //REMOVE FOR VR
+    // public GameObject crosshairUI; //REMOVE FOR VR
 
     private bool playedReloadSound = true;
     private WeaponDurability weaponDurability;
@@ -28,7 +29,7 @@ public class Crossbow : MonoBehaviour
     }
     void Update()
     {
-        crosshairUI.SetActive(objectGrabbable.isHeld());
+        // crosshairUI.SetActive(objectGrabbable.isHeld());
         if (timer > 0)
         {
             timer -= Time.deltaTime / fireRate;
@@ -40,10 +41,9 @@ public class Crossbow : MonoBehaviour
             playedReloadSound = true;
         }
 
-        if(Input.GetKeyDown(KeyCode.E)  && objectGrabbable.isHeld() && timer <= 0 ) //if on laptop and u cant right click u can use this one
-        // if (Input.GetMouseButtonDown(1) && objectGrabbable.isHeld() && timer <= 0) {
-            if (weaponDurability != null && !weaponDurability.IsBroken())
-            {
+        if(((objectGrabbable.isHeldByLeft() && OVRInput.GetDown(OVRInput.RawButton.LIndexTrigger))
+        || (objectGrabbable.isHeldByRight() && OVRInput.GetDown(OVRInput.RawButton.RIndexTrigger)))
+        && timer <= 0) {
                 audioSource.volume = 0.3f;
                 audioSource.PlayOneShot(shootingSound);
                 Shoot();
@@ -55,8 +55,8 @@ public class Crossbow : MonoBehaviour
     void Shoot()
     {
         GameObject arrow = Instantiate(arrowPrefab, arrowSpawnTransform.position, Quaternion.LookRotation(arrowSpawnTransform.forward));
-        arrow.GetComponent<Rigidbody>().velocity = Camera.main.transform.forward * arrowSpeed;
-        //arrow.GetComponent<Rigidbody>().velocity = arrowSpawnTransform.forward * arrowSpeed;  THIS SHOULD BE THE VR ONE
+        // arrow.GetComponent<Rigidbody>().velocity = Camera.main.transform.forward * arrowSpeed;
+        arrow.GetComponent<Rigidbody>().velocity = arrowSpawnTransform.forward * arrowSpeed;  // THIS SHOULD BE THE VR ONE
 
         timer = 1;
     }

@@ -3,7 +3,12 @@ guid: b9896086e4ce5a1408399172246e226b
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - m_Animator: {instanceID: 0}
+  - target: {instanceID: 0}
+  - throwSound: {instanceID: 0}
+  - audioSource: {instanceID: 0}
+  - tomatoPrefab: {fileID: 7711825394073895313, guid: 0718c8b31df11bd408bffcfd3729b04a, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
