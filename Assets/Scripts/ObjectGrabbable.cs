@@ -29,13 +29,13 @@ public class ObjectGrabbable : MonoBehaviour
         if (autoOrient) {
             // for vr controls
             Vector3 currentEuler = objectGrabPointTransform.rotation.eulerAngles;
-            // if(gameObject.CompareTag("Weapon"))
-            // {
-            //     transform.rotation = Quaternion.Euler(0f, currentEuler.y + 90f, 0f);   
-            // } else
-            // {
+            if(gameObject.CompareTag("Shield"))
+            {
+                transform.rotation = Quaternion.Euler(90f, currentEuler.y, 0f);   
+            } else
+            {
                 transform.rotation = Quaternion.Euler(0f, currentEuler.y, 0f);
-            // }
+            }
             
             // for current first person mouse controls
             // Vector3 currentEuler = playerTransform.rotation.eulerAngles;
