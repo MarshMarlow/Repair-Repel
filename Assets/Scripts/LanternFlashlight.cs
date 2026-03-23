@@ -1,9 +1,12 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class LanternFlashlight : MonoBehaviour
 {
     [SerializeField] private Light lanternLight;
-    [SerializeField] private KeyCode toggleKey = KeyCode.F;
+    // [SerializeField] private KeyCode toggleKey = KeyCode.F;
+    [SerializeField] private OVRInput.RawButton leftLightButton = OVRInput.RawButton.X;
+    [SerializeField] private OVRInput.RawButton rightLightButton = OVRInput.RawButton.A;
     [SerializeField] private bool startOn = true;
 
     [SerializeField] private float maxOnTimeSeconds = 60f;
@@ -51,7 +54,7 @@ public class LanternFlashlight : MonoBehaviour
         }
 
         // flashlight off and on toggle
-        if (Input.GetKeyDown(toggleKey))
+        if (OVRInput.GetDown(leftLightButton) || OVRInput.GetDown(rightLightButton))
         {
             // If dead, do not turn on
             if (isEmpty)

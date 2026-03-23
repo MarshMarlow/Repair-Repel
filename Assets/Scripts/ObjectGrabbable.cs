@@ -29,7 +29,11 @@ public class ObjectGrabbable : MonoBehaviour
         if (autoOrient) {
             // for vr controls
             Vector3 currentEuler = objectGrabPointTransform.rotation.eulerAngles;
-            if(gameObject.CompareTag("Shield"))
+            if(gameObject.CompareTag("Helmet"))
+            {
+                objectGrabPointTransform = GameObject.Find("HeadMount").transform;
+            }
+            else if(gameObject.CompareTag("Shield"))
             {
                 transform.rotation = Quaternion.Euler(90f, currentEuler.y, 0f);   
             } else
@@ -53,27 +57,27 @@ public class ObjectGrabbable : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // if (objectGrabPointTransform != null)
-        // {
-        //     // float lerpSpeed = 10f;
-        //     // Vector3 newPos = Vector3.Lerp(transform.position, objectGrabPointTransform.position, Time.deltaTime * lerpSpeed);
-        //     // objectRigidbody.MovePosition(newPos);
+        if (objectGrabPointTransform != null)
+        {
+            float lerpSpeed = 10f;
+            Vector3 newPos = Vector3.Lerp(transform.position, objectGrabPointTransform.position, Time.deltaTime * lerpSpeed);
+            objectRigidbody.MovePosition(newPos);
             
-        //     // rotates the object currently based on where the player is looking - can change it to objectGrabPointTransform rotation once we integrate.
-        //     // Vector3 currentEuler = playerTransform.rotation.eulerAngles;
-        //     Vector3 currentEuler = objectGrabPointTransform.rotation.eulerAngles;
-        //     if (gameObject.CompareTag("Shield"))
-        //     {
-        //         transform.rotation = Quaternion.Euler(90f, currentEuler.y, 0f);
-        //     } 
-        //     else if (gameObject.CompareTag("Helmet")) // allows for light (from helmet light) to follow camera vertically
-        //     {
-        //          transform.rotation = objectGrabPointTransform.rotation;
-        //     }
-        //     else {
-        //         transform.rotation = Quaternion.Euler(0f, currentEuler.y, 0f);
-        //     }
-        // }
+            // rotates the object currently based on where the player is looking - can change it to objectGrabPointTransform rotation once we integrate.
+            // Vector3 currentEuler = playerTransform.rotation.eulerAngles;
+            // Vector3 currentEuler = objectGrabPointTransform.rotation.eulerAngles;
+            // if (gameObject.CompareTag("Shield"))
+            // {
+            //     transform.rotation = Quaternion.Euler(90f, currentEuler.y, 0f);
+            // } 
+            /*else*/ if (gameObject.CompareTag("Helmet")) // allows for light (from helmet light) to follow camera vertically
+            {
+                 transform.rotation = objectGrabPointTransform.rotation;
+            }
+            // else {
+            //     transform.rotation = Quaternion.Euler(0f, currentEuler.y, 0f);
+            // }
+        }
     }
 
     // return whether the object is currently being held

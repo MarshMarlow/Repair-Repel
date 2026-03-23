@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class EquipLantern : MonoBehaviour
 {
-    [SerializeField] private Transform playerCameraTransform;
+    [SerializeField] private Transform leftControllerTransform;
+    [SerializeField] private Transform rightControllerTransform;
     [SerializeField] private float equipDistance = 3.5f;
     [SerializeField] private LayerMask lanternLayerMask;
 
@@ -16,7 +17,9 @@ public class EquipLantern : MonoBehaviour
     [SerializeField] private Transform tableDropPoint;      // assigned to table_3
 
 
-    [SerializeField] private KeyCode equipKey = KeyCode.Q;
+    [SerializeField] private OVRInput.RawButton leftEquipButton = OVRInput.RawButton.Y;
+
+    [SerializeField] private OVRInput.RawButton rightEquipButton = OVRInput.RawButton.B;
 
     private ObjectGrabbable equippedLantern;
     public AudioSource audioSource;
@@ -26,18 +29,25 @@ public class EquipLantern : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(equipKey))
+        if (OVRInput.GetDown(leftEquipButton))
         {
             if (equippedLantern == null)
-                TryEquipFromLook();
+                TryEquipFromLook(leftControllerTransform);
             else
-                TryDropOnTable();
+                TryDropOnTable(leftControllerTransform);
+        }
+        else if(OVRInput.GetDown(rightEquipButton))
+        {
+            if (equippedLantern == null)
+                TryEquipFromLook(rightControllerTransform);
+            else
+                TryDropOnTable(rightControllerTransform);
         }
     }
 
-    private void TryEquipFromLook() // equips the lantern on the head mount
+    private void TryEquipFromLook(Transform controller) // equips the lantern on the head mount
     {
-        if (Physics.Raycast(playerCameraTransform.position, playerCameraTransform.forward,
+        if (Physics.Raycast(controller.position, controller.forward,
             out RaycastHit hit, equipDistance, lanternLayerMask))
         {
             ObjectGrabbable grabbable = hit.transform.GetComponentInParent<ObjectGrabbable>();
@@ -48,14 +58,17 @@ public class EquipLantern : MonoBehaviour
             equippedLantern = grabbable;
             audioSource.PlayOneShot(put_on);
             equippedLantern.Grab();
+        } else
+        {
+            Debug.Log("RAY MISS");
         }
     }
 
-    private void TryDropOnTable()
+    private void TryDropOnTable(Transform controller)
     {
         if (equippedLantern == null) return;
 
-        if (Physics.Raycast(playerCameraTransform.position, playerCameraTransform.forward,
+        if (Physics.Raycast(controller.position, controller.forward,
             out RaycastHit hit, dropCheckDistance, tableLayerMask))
         {
             LanternFlashlight lf = equippedLantern.GetComponent<LanternFlashlight>();
@@ -86,4 +99,11 @@ public class EquipLantern : MonoBehaviour
     }
 
     public bool HasEquippedLantern() => equippedLantern != null;
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;        
+        Gizmos.DrawRay(leftControllerTransform.position, leftControllerTransform.forward * equipDistance);
+        Gizmos.DrawRay(rightControllerTransform.position, rightControllerTransform.forward * equipDistance);
+    }
 }
