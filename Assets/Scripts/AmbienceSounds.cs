@@ -39,7 +39,7 @@ public class AmbienceSounds : MonoBehaviour {
 
             if (Random.value <= playChance && !isPaused) {
                 // pick an audio clip to play and the place to play the audio
-                AudioClip clip = ambienceSounds[5];//ambienceSounds[Random.Range(0, ambienceSounds.Count)];
+                AudioClip clip = ambienceSounds[Random.Range(0, ambienceSounds.Count)];
                 
                 Transform obj = soundSpawnPoints[Random.Range(0, soundSpawnPoints.Count)];
                 
