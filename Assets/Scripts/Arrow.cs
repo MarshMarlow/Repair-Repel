@@ -34,5 +34,6 @@ public class Arrow : MonoBehaviour
         }
 
         Destroy(gameObject);
+        Debug.Log("Arrow Destroyed");
     }
 }
