@@ -2738,9 +2738,6 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 490126637162147899, guid: d6fdb1e4c30f266459d2118f85d3f2aa, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 224700940}
-    - targetCorrespondingSourceObject: {fileID: 490126637162147899, guid: d6fdb1e4c30f266459d2118f85d3f2aa, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 224700935}
     - targetCorrespondingSourceObject: {fileID: 490126637162147899, guid: d6fdb1e4c30f266459d2118f85d3f2aa, type: 3}
       insertIndex: -1
@@ -9935,11 +9932,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1642511598}
   m_SourcePrefab: {fileID: 100100000, guid: 6b30febf62224834ab1e63d821805922, type: 3}
---- !u!1 &908292897 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1388041942477824344, guid: 16d1c6fa8b403654b943d4fb0476ab5e, type: 3}
-  m_PrefabInstance: {fileID: 3816222984207032161}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &905279272
 GameObject:
   m_ObjectHideFlags: 0
@@ -10074,6 +10066,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 905279272}
   m_CullTransparentMesh: 1
+--- !u!1 &908292897 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1388041942477824344, guid: 16d1c6fa8b403654b943d4fb0476ab5e, type: 3}
+  m_PrefabInstance: {fileID: 3816222984207032161}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &909335578
 GameObject:
   m_ObjectHideFlags: 0
@@ -26064,7 +26061,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2660876256525162367, guid: 16d1c6fa8b403654b943d4fb0476ab5e, type: 3}
   m_PrefabInstance: {fileID: 3816222984207032161}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 908292897}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3ec883efdf99b67499bd94be4e5f2cdd, type: 3}
@@ -26437,3 +26434,4 @@ SceneRoots:
   - {fileID: 207316978203004664}
   - {fileID: 3634897297252490668}
   - {fileID: 128080915}
+  - {fileID: 181751004}
