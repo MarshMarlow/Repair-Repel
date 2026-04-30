@@ -21,7 +21,7 @@ public class ItemPickup : MonoBehaviour
                 {
                     if (raycastHit.transform.TryGetComponent(out objectGrabbable))
                     {
-                        objectGrabbable.Grab(objectGrabPointTransform);
+                        objectGrabbable.Grab();
                     }
                 }
             } 
