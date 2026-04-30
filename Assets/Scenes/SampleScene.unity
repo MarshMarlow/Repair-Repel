@@ -43572,7 +43572,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   repairPerHit: 5
-  requireAttackInput: 1
+  requireAttackInput: 0
   audioSource: {fileID: 1235940147}
   hammer_hit1: {fileID: 8300000, guid: 7e2ede1045d60d544baf338064b65ab8, type: 3}
   hammer_hit2: {fileID: 8300000, guid: 95172b4a52fc0d9409457e4c42f093ce, type: 3}
@@ -52729,6 +52729,14 @@ PrefabInstance:
     - target: {fileID: 1622849178944335445, guid: 16d1c6fa8b403654b943d4fb0476ab5e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2361563271323435456, guid: 16d1c6fa8b403654b943d4fb0476ab5e, type: 3}
+      propertyPath: maxDurability
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2361563271323435456, guid: 16d1c6fa8b403654b943d4fb0476ab5e, type: 3}
+      propertyPath: currentDurability
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 4589203626831118727, guid: 16d1c6fa8b403654b943d4fb0476ab5e, type: 3}
       propertyPath: m_LocalPosition.x
