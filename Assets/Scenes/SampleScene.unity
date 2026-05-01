@@ -3277,7 +3277,7 @@ BoxCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1024
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
@@ -5480,6 +5480,18 @@ MonoBehaviour:
   _whenSelectingInteractorViewRemoved:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &224700942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 224700932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3890684c60ca5848adfe716ca269a18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &225780268
 GameObject:
   m_ObjectHideFlags: 0
@@ -6094,6 +6106,10 @@ PrefabInstance:
       value: Shield
       objectReference: {fileID: 0}
     - target: {fileID: 490126637162147899, guid: d6fdb1e4c30f266459d2118f85d3f2aa, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 490126637162147899, guid: d6fdb1e4c30f266459d2118f85d3f2aa, type: 3}
       propertyPath: m_TagString
       value: Shield
       objectReference: {fileID: 0}
@@ -6119,7 +6135,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 974632640402549377, guid: d6fdb1e4c30f266459d2118f85d3f2aa, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 516.94
+      value: 517.471
       objectReference: {fileID: 0}
     - target: {fileID: 974632640402549377, guid: d6fdb1e4c30f266459d2118f85d3f2aa, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6171,6 +6187,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 490126637162147899, guid: d6fdb1e4c30f266459d2118f85d3f2aa, type: 3}
       insertIndex: -1
       addedObject: {fileID: 224700936}
+    - targetCorrespondingSourceObject: {fileID: 490126637162147899, guid: d6fdb1e4c30f266459d2118f85d3f2aa, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 224700942}
   m_SourcePrefab: {fileID: 100100000, guid: d6fdb1e4c30f266459d2118f85d3f2aa, type: 3}
 --- !u!1001 &239594492
 PrefabInstance:
@@ -17928,7 +17947,7 @@ GameObject:
   - component: {fileID: 757686066}
   - component: {fileID: 757686065}
   - component: {fileID: 757686064}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Shield DistanceHandGrab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23822,6 +23841,10 @@ PrefabInstance:
       value: WoodenCross_2
       objectReference: {fileID: 0}
     - target: {fileID: 1983023933991480, guid: c1df86f4e21081146a9db616c730056a, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1983023933991480, guid: c1df86f4e21081146a9db616c730056a, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -25482,7 +25505,8 @@ GameObject:
   - component: {fileID: 1072651479}
   - component: {fileID: 1072651480}
   - component: {fileID: 1072651481}
-  m_Layer: 0
+  - component: {fileID: 1072651482}
+  m_Layer: 11
   m_Name: Crucifix
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25626,6 +25650,18 @@ MonoBehaviour:
   _whenSelectingInteractorViewRemoved:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1072651482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1072651476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3890684c60ca5848adfe716ca269a18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1074805637
 GameObject:
   m_ObjectHideFlags: 0
@@ -29224,7 +29260,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1235940146}
   - component: {fileID: 1235940147}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Anvil Hitting Audio Source
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43523,6 +43559,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: blacksmith_hammer_anvil
       objectReference: {fileID: 0}
+    - target: {fileID: 5494932524449038402, guid: bceb571a8d099a343a86ddb624f88303, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -43548,6 +43588,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5494932524449038402, guid: bceb571a8d099a343a86ddb624f88303, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1797406133}
+    - targetCorrespondingSourceObject: {fileID: 5494932524449038402, guid: bceb571a8d099a343a86ddb624f88303, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1797406136}
   m_SourcePrefab: {fileID: 100100000, guid: bceb571a8d099a343a86ddb624f88303, type: 3}
 --- !u!4 &1797406125 stripped
 Transform:
@@ -43698,6 +43741,18 @@ MonoBehaviour:
   _whenSelectingInteractorViewRemoved:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1797406136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1797406126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3890684c60ca5848adfe716ca269a18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1798960962
 GameObject:
   m_ObjectHideFlags: 0
@@ -44776,7 +44831,7 @@ GameObject:
   - component: {fileID: 1837180073}
   - component: {fileID: 1837180072}
   - component: {fileID: 1837180077}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Crucifix DistanceHandGrab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51045,7 +51100,7 @@ GameObject:
   - component: {fileID: 2100888718}
   - component: {fileID: 2100888717}
   - component: {fileID: 2100888716}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Hammer DistanceHandGrab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52367,6 +52422,7 @@ GameObject:
   - component: {fileID: 8171922189189373727}
   - component: {fileID: 8171922189189373726}
   - component: {fileID: 8171922189189373725}
+  - component: {fileID: 8171922189189373729}
   m_Layer: 8
   m_Name: helmet_with_light
   m_TagString: Helmet
@@ -52750,6 +52806,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.572
       objectReference: {fileID: 0}
+    - target: {fileID: 5969861159515873745, guid: 16d1c6fa8b403654b943d4fb0476ab5e, type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6646792150189517340, guid: 16d1c6fa8b403654b943d4fb0476ab5e, type: 3}
       propertyPath: m_Volume
       value: 0.488
@@ -52768,11 +52828,11 @@ PrefabInstance:
       objectReference: {fileID: 392099337}
     - target: {fileID: 8773512081298825934, guid: 16d1c6fa8b403654b943d4fb0476ab5e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.764
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8773512081298825934, guid: 16d1c6fa8b403654b943d4fb0476ab5e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.654
+      value: 0.449
       objectReference: {fileID: 0}
     - target: {fileID: 8773512081298825934, guid: 16d1c6fa8b403654b943d4fb0476ab5e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -52816,6 +52876,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1388041942477824344, guid: 16d1c6fa8b403654b943d4fb0476ab5e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7611900623976208180}
+    - targetCorrespondingSourceObject: {fileID: 1388041942477824344, guid: 16d1c6fa8b403654b943d4fb0476ab5e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7611900623976208186}
   m_SourcePrefab: {fileID: 100100000, guid: 16d1c6fa8b403654b943d4fb0476ab5e, type: 3}
 --- !u!23 &3990072257085854388
 MeshRenderer:
@@ -53253,6 +53316,18 @@ MonoBehaviour:
   _whenSelectingInteractorViewRemoved:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7611900623976208186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 69443915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3890684c60ca5848adfe716ca269a18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!33 &7678897334121432342
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -53462,6 +53537,18 @@ MonoBehaviour:
   audioSource: {fileID: 1295958633}
   turn_on: {fileID: 8300000, guid: 7d9f7310d6197994cae13e0134b1743f, type: 3}
   turn_off: {fileID: 8300000, guid: 69c09ef750a802146ade32460e72d681, type: 3}
+--- !u!114 &8171922189189373729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 316714804927502108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3890684c60ca5848adfe716ca269a18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8204767108675580407
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -53473,6 +53560,10 @@ PrefabInstance:
     - target: {fileID: 5393215578589016640, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5393215578589016640, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 3584
       objectReference: {fileID: 0}
     - target: {fileID: 5393215578589016642, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: m_TagString

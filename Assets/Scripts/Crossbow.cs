@@ -43,7 +43,7 @@ public class Crossbow : MonoBehaviour
 
         if(((objectGrabbable.isHeldByLeft() && OVRInput.GetDown(OVRInput.RawButton.LIndexTrigger))
         || (objectGrabbable.isHeldByRight() && OVRInput.GetDown(OVRInput.RawButton.RIndexTrigger)))
-        && timer <= 0) {
+        && timer <= 0 && weaponDurability.CurrentDurability > 0) {
                 audioSource.volume = 0.3f;
                 audioSource.PlayOneShot(shootingSound);
                 Shoot();

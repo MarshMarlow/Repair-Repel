@@ -36,7 +36,7 @@ public class CastleHealth : MonoBehaviour
         yield return new WaitForSeconds(sliderEaseTime);
 
         if (currentHealth <= 0) {
-            // END GAME
+            Application.Quit();
         }
     }
 
